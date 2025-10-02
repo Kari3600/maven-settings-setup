@@ -1,0 +1,9 @@
+name: "Custom Setup Java"
+description: "Writes Maven settings.xml for multiple servers"
+inputs:
+  repositories:
+    description: "Comma-separated list of server ids"
+    required: true
+runs:
+  using: "node16"
+  main: "dist/index.js"
