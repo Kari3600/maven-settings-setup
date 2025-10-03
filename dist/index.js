@@ -25687,6 +25687,8 @@ const fs = __importStar(__nccwpck_require__(9896));
 async function run() {
     try {
         const repos = core.getInput('repositories').split(',');
+        const actor = core.getInput('actor') || 'GITHUB_ACTOR';
+        const token = core.getInput('token') || 'GITHUB_TOKEN';
         // Generate settings.xml
         let xml = `<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -25695,8 +25697,8 @@ async function run() {
         for (const repo of repos) {
             xml += `<server>
   <id>${repo}</id>
-  <username>\${env.GITHUB_ACTOR}</username>
-  <password>\${env.GITHUB_TOKEN}</password>
+  <username>\${env.${actor}}</username>
+  <password>\${env.${token}}</password>
 </server>\n`;
         }
         xml += `</servers></settings>`;

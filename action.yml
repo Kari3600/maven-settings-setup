@@ -4,6 +4,14 @@ inputs:
   repositories:
     description: "Comma-separated list of server ids"
     required: true
+  actor:
+    description: "Environment variable name for GitHub actor"
+    required: false
+    default: "GITHUB_ACTOR"
+  token:
+    description: "Environment variable name for GitHub token"
+    required: false
+    default: "GITHUB_TOKEN"
 runs:
   using: "node16"
   main: "dist/index.js"
